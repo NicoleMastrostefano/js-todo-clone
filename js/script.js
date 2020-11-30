@@ -28,5 +28,12 @@ $(document).ready(
     $("#toDo").append(html);
     }
 
-}
+
+  $(".delete").click(
+    function(){
+      $(this).parent().remove();
+    }
+  )
+  
+  }
 );
