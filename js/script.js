@@ -16,24 +16,37 @@ $(document).ready(
   var source = $("#toDoList-template").html();
   var template = Handlebars.compile(source);
 
-
   for (var i = 0; i <list.length; i++){
-
     var context = {
       text: list[i]
     };
 
     var html = template(context);
-
     $("#toDo").append(html);
     }
-
 
   $(".delete").click(
     function(){
       $(this).parent().remove();
     }
-  )
-  
+  );
+
+  $("#add").keypress(function(event){
+    if(event.which==13 || event.keycode==13){
+      var newString = $("[name = add-field]").val();
+      console.log(newString);
+      var context = {
+        text: newString
+      };
+
+      var html = template(context);
+      $("#toDo").append(html);
+      $(".delete").click(
+        function(){
+          $(this).parent().remove();
+        }
+      );
+    };
+  });
   }
 );
